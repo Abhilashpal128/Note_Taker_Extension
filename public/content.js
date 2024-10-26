@@ -13,10 +13,8 @@ function startRecording(stream) {
     const audioBlob = new Blob(audioChunks, { type: "audio/wav" });
     audioChunks = [];
 
-    // Log the recorded audio to the console
     console.log("Audio Recorded:", audioBlob);
 
-    // Optionally: Play the recorded audio
     const audioURL = URL.createObjectURL(audioBlob);
     const audio = new Audio(audioURL);
     audio.play();
@@ -43,5 +41,5 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       sendResponse({ message: "No recording in progress" });
     }
   }
-  return true; // Keeps the message channel open for asynchronous responses
+  return true;
 });
